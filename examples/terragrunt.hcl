@@ -3,12 +3,12 @@ include {
 }
 
 terraform {
-  source = "../"
+  source = "../modules//repo"
 }
 
 inputs = {
   create_repo         = true
   ecr_repo_url_to_ssm = true
-  name                = "data-pipelines"
-  ssm_key             = "test-key"
+  name                = "foo"
+  ssm_key             = "mut-terraform-aws-ecr-repo-address"
 }
