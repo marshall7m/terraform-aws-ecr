@@ -1,20 +1,20 @@
 provider "docker" {
-    # host = "unix:///var/run/docker.sock"
+  # host = "unix:///var/run/docker.sock"
 
-    registry_auth {
-        address = var.ecr_address
-        username = "AWS"
-        password = var.ecr_password
-    }
+  registry_auth {
+    address  = var.ecr_address
+    username = "AWS"
+    password = var.ecr_password
+  }
 }
 
 resource "docker_image" "this" {
   name = "test"
   build {
-    path = var.path
-    tag  = [var.tag]
+    path      = var.path
+    tag       = [var.tag]
     build_arg = var.build_args
-    label = var.label
+    label     = var.label
   }
 }
 
@@ -33,5 +33,5 @@ resource "docker_image" "this" {
 # }
 
 variable "test" {
-  
+
 }

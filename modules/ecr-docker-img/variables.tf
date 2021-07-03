@@ -1,36 +1,36 @@
 variable "source_path" {
   description = "Path to Docker context"
-  type = string
+  type        = string
 }
 
 variable "trigger_build_paths" {
   description = "List of directory/file paths that when modified will trigger a new build"
-  type = list(string)
-  default = null
+  type        = list(string)
+  default     = null
 }
 
 variable "tag" {
   description = "Tag for the Docker image"
-  type = string
-  default = "latest"
+  type        = string
+  default     = "latest"
 }
 
 variable "repo_url" {
   description = "Pre-existing AWS ECR repository URL to push the Docker image to (Used mainly for cross-account repos)"
-  type = string
-  default = null
+  type        = string
+  default     = null
 }
 
 variable "create_repo" {
   description = "Determines if this module should create an AWS ECR repo"
-  type = bool
-  default = false
+  type        = bool
+  default     = false
 }
 
 variable "repo_name" {
-    description = "Name of the AWS ECR repository to create and push the docker image to"
-    type = string
-    default = null
+  description = "Name of the AWS ECR repository to create and push the docker image to"
+  type        = string
+  default     = null
 }
 
 variable "codebuild_access" {
