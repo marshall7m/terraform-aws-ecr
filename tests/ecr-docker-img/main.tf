@@ -6,8 +6,7 @@ module "mut_ecr_docker_img" {
   repo_name   = "test"
   tag         = "latest"
   trigger_build_paths = [
-    "${path.module}/Dockerfile",
-    "${path.module}/foo.txt"
+    "${path.module}"
   ]
 }
 
