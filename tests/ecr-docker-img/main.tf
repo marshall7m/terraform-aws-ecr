@@ -8,6 +8,9 @@ module "mut_ecr_docker_img" {
   trigger_build_paths = [
     "${path.module}"
   ]
+  build_args = {
+    "foo" = "doo"
+  }
 }
 
 /* TODO: Create terraform tests

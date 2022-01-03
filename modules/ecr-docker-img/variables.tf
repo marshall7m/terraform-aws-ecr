@@ -38,3 +38,9 @@ variable "codebuild_access" {
   type        = bool
   default     = false
 }
+
+variable "build_args" {
+  description = "Map of build arguments to supply at build time"
+  type        = map(string)
+  default     = {}
+}
