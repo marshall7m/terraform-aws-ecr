@@ -7,6 +7,7 @@ locals {
   ])
   full_image_url  = "${local.repo_url}:${var.tag}"
   build_arg_flags = join(" ", [for key, value in var.build_args : "--build-arg ${key}=${value}"])
+  cache = var.cache ? "" : "--no-cache"
 }
 
 data "aws_region" "current" {}
@@ -29,7 +30,7 @@ resource "null_resource" "build" {
   provisioner "local-exec" {
     command     = <<EOF
 
-docker build -t ${var.repo_name} ${var.source_path} ${local.build_arg_flags}
+docker build ${local.cache} -t ${var.repo_name} ${var.source_path} ${local.build_arg_flags}
 
 aws ecr get-login-password --region ${data.aws_region.current.name} | docker login --username AWS --password-stdin ${local.repo_url}
 docker tag ${var.repo_name} ${local.full_image_url}

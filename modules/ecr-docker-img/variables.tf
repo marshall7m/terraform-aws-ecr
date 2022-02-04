@@ -44,3 +44,9 @@ variable "build_args" {
   type        = map(string)
   default     = {}
 }
+
+variable "cache" {
+  description = "Determines if docker build should use a cache (`--no-cache` flag)"
+  type = bool
+  default = true
+}

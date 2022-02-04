@@ -1,12 +1,13 @@
 module "mut_ecr_docker_img" {
-  source = "../../modules//ecr-docker-img"
-
+  source      = "../../modules//ecr-docker-img"
+  cache       = false
   create_repo = true
   source_path = "./"
   repo_name   = "test"
   tag         = "latest"
   trigger_build_paths = [
-    "${path.module}"
+    "${path.module}/Dockerfile",
+    "${path.module}/foo.txt"
   ]
   build_args = {
     "foo" = "doo"
