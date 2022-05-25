@@ -7,7 +7,7 @@ locals {
   ])
   full_image_url  = "${local.repo_url}:${var.tag}"
   build_arg_flags = join(" ", [for key, value in var.build_args : "--build-arg ${key}=${value}"])
-  cache = var.cache ? "" : "--no-cache"
+  cache           = var.cache ? "" : "--no-cache"
 }
 
 data "aws_region" "current" {}

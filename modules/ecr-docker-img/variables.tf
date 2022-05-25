@@ -6,7 +6,7 @@ variable "source_path" {
 variable "trigger_build_paths" {
   description = "List of directory/file paths that when modified will trigger a new build"
   type        = list(string)
-  default     = null
+  default     = []
 }
 
 variable "tag" {
@@ -47,6 +47,6 @@ variable "build_args" {
 
 variable "cache" {
   description = "Determines if docker build should use a cache (`--no-cache` flag)"
-  type = bool
-  default = true
+  type        = bool
+  default     = true
 }

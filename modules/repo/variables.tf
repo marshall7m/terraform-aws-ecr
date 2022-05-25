@@ -22,24 +22,6 @@ variable "ecr_tags" {
   default     = {}
 }
 
-variable "ecr_repo_url_to_ssm" {
-  description = "Determines if the repo url should be saved in SSM Parameter Store"
-  type        = bool
-  default     = false
-}
-
-variable "ssm_key" {
-  description = "SSM Parameter Store key for ECR repo url"
-  type        = string
-  default     = null
-}
-
-variable "ssm_tags" {
-  description = "Tags to attach to the ECR repo url SSM parameter"
-  type        = map(any)
-  default     = {}
-}
-
 variable "codebuild_access" {
   description = "Determines if CodeBuild services are allowed to pull images from the ECR repo"
   type        = bool
