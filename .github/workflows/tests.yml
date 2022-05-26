@@ -25,11 +25,13 @@ env:
   PYTEST_ADDOPTS: --color=yes
   PYTHON_VERSION: pypy-3.9
   AWS_REGION: us-west-2
+  VIRTUAL_ENV: /opt/base-venv
+  TFENV_VERSION: 2.2.2
 
 jobs:
   precommit:
     runs-on: ubuntu-latest
-    container: ghcr.io/marshall7m/terrace:v0.1.1
+    container: ghcr.io/marshall7m/terrace:v0.1.2
     permissions:
       id-token: write
       contents: read
@@ -44,7 +46,6 @@ jobs:
   unit:
     needs: precommit
     runs-on: ubuntu-latest
-    container: ghcr.io/marshall7m/terrace:v0.1.1
     permissions:
       id-token: write
       contents: read
@@ -66,12 +67,15 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: ${{ env.AWS_REGION }}
-  
-      - uses: actions/setup-python@v3
-        with:
-          python-version: ${{ env.PYTHON_VERSION }}
-          architecture: x64
 
+      - name: Install Deps
+        id: install
+        shell: bash
+        run: |
+          bash install.sh
+
+      - uses: docker-practice/actions-setup-docker@v1
+      
       - name: Tests
         id: pytest
         shell: bash
