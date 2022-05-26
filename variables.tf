@@ -15,8 +15,14 @@ variable "tag" {
   default     = "latest"
 }
 
+variable "repo_tags" {
+  description = "AWS tags for the ECR repository"
+  type        = map(string)
+  default     = {}
+}
+
 variable "repo_url" {
-  description = "Pre-existing AWS ECR repository URL to push the Docker image to (Used mainly for cross-account repos)"
+  description = "Pre-existing AWS ECR repository URL to push the Docker image to (format: aws_account_id.dkr.ecr.region.amazonaws.com/repositoryName)"
   type        = string
   default     = null
 }
@@ -27,10 +33,10 @@ variable "create_repo" {
   default     = false
 }
 
-variable "repo_name" {
+variable "name" {
   description = "Name of the AWS ECR repository to create and push the docker image to"
   type        = string
-  default     = null
+  default     = "ecr"
 }
 
 variable "codebuild_access" {
