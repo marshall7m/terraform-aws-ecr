@@ -6,8 +6,9 @@ Terraform modules that builds and uploads a Docker image to an ECR repository
 
 The following requirements are for the machine that is creating the Terraform module:
 
-- Docker binary must be installed
-- Docker daemon must be running
+- Docker binary installed
+- Docker daemon running
+- AWS CLI installed
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
