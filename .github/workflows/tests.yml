@@ -72,12 +72,20 @@ jobs:
         id: install
         shell: bash
         run: |
+          printenv | grep AWS
           bash install.sh
 
-      - uses: docker-practice/actions-setup-docker@v1
-      
       - name: Tests
-        id: pytest
-        shell: bash
+        id: unit
         run: |
-          pytest -vv tests/unit
+          docker run --rm --entrypoint="" \
+            -v /usr/bin/docker:/usr/bin/docker \
+            -v /var/run/docker.sock:/var/run/docker.sock \
+            -v $PWD:/src \
+            -e AWS_ACCESS_KEY_ID \
+            -e AWS_SECRET_ACCESS_KEY \
+            -e AWS_REGION \
+            -e AWS_DEFAULT_REGION \
+            -e AWS_SESSION_TOKEN \
+            ghcr.io/marshall7m/terrace:v0.1.2 \
+            run_tests.sh
