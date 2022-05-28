@@ -72,7 +72,6 @@ jobs:
         id: install
         shell: bash
         run: |
-          printenv | grep AWS
           bash install.sh
 
       - name: Tests
@@ -88,4 +87,4 @@ jobs:
             -e AWS_DEFAULT_REGION \
             -e AWS_SESSION_TOKEN \
             ghcr.io/marshall7m/terrace:v0.1.2 \
-            run_tests.sh
+            /bin/bash run_tests.sh

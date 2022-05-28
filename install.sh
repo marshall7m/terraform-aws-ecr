@@ -9,8 +9,8 @@ apt-get install -y \
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 
-chmod u+x /usr/bin/*
-chmod u+x /usr/local/bin/*
-apt-get clean
-rm -rf /var/lib/apt/lists/*
-rm -rf /tmp/*
+sudo chmod u+x /usr/bin/*
+sudo chmod u+x /usr/local/bin/*
+sudo apt-get clean
+sudo rm -rf /var/lib/apt/lists/*
+sudo rm -rf /tmp/*
